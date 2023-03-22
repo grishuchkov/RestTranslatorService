@@ -2,12 +2,13 @@ package com.grishuchkov.resttranslatorservice.controller;
 
 import com.grishuchkov.resttranslatorservice.dto.RequestDTO;
 import com.grishuchkov.resttranslatorservice.dto.ResponseDTO;
+import com.grishuchkov.resttranslatorservice.repo.RequestRepository;
 import com.grishuchkov.resttranslatorservice.service.TranslateService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.web.bind.annotation.*;
+
+import javax.sql.DataSource;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,9 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class YandexTranslateController {
 
     private final TranslateService translateService;
+    private final RequestRepository requestRepository;
 
     @PostMapping("")
     public ResponseDTO getTranslateFromYandex(@RequestBody RequestDTO requestDTO){
         return translateService.getTranslateFromYandex(requestDTO);
     }
+
+   @PostMapping("/db")
+    public void postToBase(@RequestBody RequestDTO requestDTO){
+        requestRepository.save(requestDTO);
+   }
 }
