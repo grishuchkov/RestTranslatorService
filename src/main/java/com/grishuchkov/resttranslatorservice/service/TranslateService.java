@@ -19,9 +19,10 @@ public class TranslateService {
     public ResponseDTO getTranslateFromYandex(RequestDTO requestDTO){
 
         ResponseFromYandex responseFromYandex = testClient.translator(requestDTO);
+
         responseDTO.setTranslatedText(responseFromYandex.getTranslations().get(0).getText());
-
-
        return responseDTO;
     }
+
+
 }
