@@ -2,7 +2,6 @@ package com.grishuchkov.resttranslatorservice.service;
 
 
 import com.grishuchkov.resttranslatorservice.client.TestClient;
-import com.grishuchkov.resttranslatorservice.client.YandexClient;
 import com.grishuchkov.resttranslatorservice.dto.RequestDTO;
 import com.grishuchkov.resttranslatorservice.dto.ResponseDTO;
 import com.grishuchkov.resttranslatorservice.dto.ResponseFromYandex;
