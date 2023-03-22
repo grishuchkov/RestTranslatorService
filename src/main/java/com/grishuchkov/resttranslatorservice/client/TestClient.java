@@ -1,6 +1,7 @@
 package com.grishuchkov.resttranslatorservice.client;
 
 import com.grishuchkov.resttranslatorservice.dto.RequestDTO;
+import com.grishuchkov.resttranslatorservice.dto.ResponseFromYandex;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,7 +16,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class TestClient {
 
-    public String translator(RequestDTO requestDTO){
+    public ResponseFromYandex translator(RequestDTO requestDTO){
         String url = "https://translate.api.cloud.yandex.net/translate/v2/translate";
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -30,9 +31,6 @@ public class TestClient {
 
         HttpEntity<Map<String, String>> request = new HttpEntity<>(jsonData, headers);
 
-        String response = restTemplate.postForObject(url, request, String.class);
-        System.out.println(response);
-
-        return response;
+        return restTemplate.postForObject(url, request, ResponseFromYandex.class);
     }
 }
