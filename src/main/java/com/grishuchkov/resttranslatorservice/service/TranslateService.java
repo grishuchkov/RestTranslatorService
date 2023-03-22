@@ -15,8 +15,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TranslateService {
     private final TestClient testClient;
+    private final ResponseDTO responseDTO;
 
-    public String getTranslateFromYandex(RequestDTO requestDTO){
-        return testClient.translator(requestDTO);
+    public ResponseDTO getTranslateFromYandex(RequestDTO requestDTO){
+
+        ResponseFromYandex responseFromYandex = testClient.translator(requestDTO);
+        responseDTO.setTranslatedText(responseFromYandex.getTranslations().get(0).getText());
+
+
+       return responseDTO;
     }
 }
