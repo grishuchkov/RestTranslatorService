@@ -1,6 +1,7 @@
 package com.grishuchkov.resttranslatorservice.service;
 
 
+import com.grishuchkov.resttranslatorservice.client.TestClient;
 import com.grishuchkov.resttranslatorservice.client.YandexClient;
 import com.grishuchkov.resttranslatorservice.dto.RequestDTO;
 import com.grishuchkov.resttranslatorservice.dto.ResponseDTO;
@@ -13,14 +14,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class TranslateService {
-    private final YandexClient yandexClient;
+    private final TestClient testClient;
 
-    public ResponseDTO getTranslateFromYandex(RequestDTO requestDTO){
-
-    }
-
-    public List<ResponseFromYandex> getTranslateFromYandexClient(){
-        String json = yandexClient.translations();
-
+    public String getTranslateFromYandex(RequestDTO requestDTO){
+        return testClient.translator(requestDTO);
     }
 }

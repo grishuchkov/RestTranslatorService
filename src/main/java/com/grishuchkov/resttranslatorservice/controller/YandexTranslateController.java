@@ -17,7 +17,7 @@ public class YandexTranslateController {
     private final TranslateService translateService;
 
     @PostMapping("")
-    public ResponseDTO getTranslateFromYandex(@RequestBody RequestDTO requestDTO){
+    public String getTranslateFromYandex(@RequestBody RequestDTO requestDTO){
 
         return translateService.getTranslateFromYandex(requestDTO);
     }

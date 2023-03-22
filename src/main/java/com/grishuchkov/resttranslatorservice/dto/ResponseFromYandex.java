@@ -8,6 +8,5 @@ import java.util.List;
 
 @Data
 public class ResponseFromYandex {
-
-    private final List<String> translations = new ArrayList<>();
+    private final ArrayList<TextTranslation> translations;
 }
