@@ -1,6 +1,9 @@
 package com.grishuchkov.resttranslatorservice.repo;
 
 import com.grishuchkov.resttranslatorservice.dto.RequestDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -8,27 +11,28 @@ import java.sql.*;
 @Repository
 public class RequestRepository {
 
-//    @Value("${spring.datasource.url}")
-    private static String URL = "jdbc:h2:mem:maindb";
+    @Value("${spring.datasource.url}")
+    private String URL;
 
-//    @Value("${spring.datasource.username}")
-    private static String USERNAME = "root";
+    @Value("${spring.datasource.username}")
+    private String USERNAME;
 
-//    @Value("${spring.datasource.password}")
-    private static String PASSWORD = "root";
+    @Value("${spring.datasource.password}")
+    private String PASSWORD;
 
-    private static Connection connection;
+    private Connection connection;
 
-    static {
-        try {
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
+   private void setConnection(){
+       try {
+           connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+       } catch (SQLException throwables) {
+           throwables.printStackTrace();
+       }
+   }
 
     public void save(RequestDTO requestDTO){
-        try {
+       setConnection();
+       try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("INSERT INTO REQUEST (INPUT_TEXT, OUTPUT_TEXT, LANGUAGE_TO, LANGUAGE_FROM, IP) VALUES (?,?,?,?,?)");
 
