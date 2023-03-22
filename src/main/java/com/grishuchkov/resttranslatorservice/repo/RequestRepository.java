@@ -44,6 +44,5 @@ public class RequestRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 }
