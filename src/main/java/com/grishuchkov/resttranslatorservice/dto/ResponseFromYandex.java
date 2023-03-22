@@ -1,12 +1,11 @@
 package com.grishuchkov.resttranslatorservice.dto;
 
-import lombok.Data;
-
-import javax.swing.plaf.LabelUI;
+import lombok.*;
 import java.util.ArrayList;
-import java.util.List;
 
-@Data
+@NoArgsConstructor
+@Getter
+@Setter
 public class ResponseFromYandex {
-    private final ArrayList<TextTranslation> translations;
+    private ArrayList<Translations> translations;
 }
