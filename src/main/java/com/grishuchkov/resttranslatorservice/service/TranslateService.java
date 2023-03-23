@@ -18,7 +18,7 @@ public class TranslateService {
     private final Parser parser;
     private final RequestToYandex requestToYandex;
 
-    public ResponseDTO getTranslateFromYandex(RequestDTO requestDTO){
+    public ResponseDTO getTranslateFromYandex(RequestDTO requestDTO, String userIp){
 
         String[] wordsArray = parser.stringToList(requestDTO.getText());
 
@@ -27,6 +27,8 @@ public class TranslateService {
         requestToYandex.setTexts(wordsArray);
 
         ResponseFromYandex responseFromYandex = yandexClient.translator(requestToYandex);
+
+        String[] translatedWordsArray = parser.responseFromYandexToStringArray(responseFromYandex);
 
         responseDTO.setTranslatedText(parser.responseFromYandexToString(responseFromYandex));
 
