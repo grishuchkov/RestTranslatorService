@@ -16,6 +16,12 @@ public class RequestToYandex {
     private String targetLanguageCode;
     private String[] texts;
 
+    public void setFields(String languageFrom, String languageTo, String[] texts){
+        this.sourceLanguageCode = languageFrom;
+        this.targetLanguageCode = languageTo;
+        this.texts = texts;
+    }
+
     @Override
     public String toString() {
         return "[" + texts + "]";
