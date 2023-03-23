@@ -19,13 +19,11 @@ public class YandexTranslateController {
 
     private final TranslateService translateService;
     private final RequestRepository requestRepository;
-    private final HttpServletRequest request;
 
     @PostMapping("")
-    public ResponseDTO getTranslateFromYandex(@RequestBody RequestDTO requestDTO){
+    public ResponseDTO getTranslateFromYandex(@RequestBody RequestDTO requestDTO, HttpServletRequest request){
         String ip = request.getRemoteAddr();
         System.out.println(ip);
-
         //TO-DO передать IP внутрь сервиса.
         return translateService.getTranslateFromYandex(requestDTO);
     }
