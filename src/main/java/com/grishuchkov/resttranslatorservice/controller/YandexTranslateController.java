@@ -23,9 +23,7 @@ public class YandexTranslateController {
     @PostMapping("")
     public ResponseDTO getTranslateFromYandex(@RequestBody RequestDTO requestDTO, HttpServletRequest request){
         String ip = request.getRemoteAddr();
-        System.out.println(ip);
-        //TO-DO передать IP внутрь сервиса.
-        return translateService.getTranslateFromYandex(requestDTO);
+        return translateService.getTranslateFromYandex(requestDTO, ip);
     }
 
    @PostMapping("/db")
