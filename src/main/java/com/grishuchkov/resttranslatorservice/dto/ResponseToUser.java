@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 @Component
-public class ResponseDTO {
+public class ResponseToUser {
     private String translatedText;
 }
