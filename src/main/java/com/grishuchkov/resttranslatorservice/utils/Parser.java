@@ -10,7 +10,9 @@ import java.util.stream.Collectors;
 public class Parser {
 
     public String [] stringToList(String stringFromRequest){
-        return stringFromRequest.split(" ");
+        String withoutTrash = stringFromRequest.replaceAll("\\pP","");
+
+        return withoutTrash.split(" ");
     }
 
     public String responseFromYandexToString(ResponseFromYandex responseFromYandex){
@@ -20,5 +22,13 @@ public class Parser {
                 .map(Translations::getText)
                 .collect(Collectors.toList()).toString()
                 .replaceAll("\\pP", "");
+    }
+
+    public String [] responseFromYandexToStringArray(ResponseFromYandex responseFromYandex){
+
+        return responseFromYandex.getTranslations()
+                .stream()
+                .map(Translations::getText)
+                .toArray(String[]::new);
     }
 }
