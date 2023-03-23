@@ -10,3 +10,6 @@ spring:
   h2:
     console:
       enabled: true
+  yandex:
+    url: "https://translate.api.cloud.yandex.net/translate/v2/translate"
+    token: "Api-Key AQVNyjKkGZaGRfXIkQVZymFY6QJVCvfCHjgB-IiI"
