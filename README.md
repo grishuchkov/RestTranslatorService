@@ -1,14 +1,13 @@
 
 
-## <center>
-
-REST Yandex API Translator
-
-</center>
+## <center> REST Yandex API Translator </center>
 
 #### <center> Данный проект является тестовым (учебным) проектом. </center>
 ___
 <br>
+
+![cover](https://github.com/grishuchkov/RestTranslatorService/blob/master/logo.png)
+___
 <center>
 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
