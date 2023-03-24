@@ -8,6 +8,11 @@ ___
 
 ![cover](https://github.com/grishuchkov/RestTranslatorService/blob/master/logo.png)
 ___
+
+
+### Навигация:
+[1. Описание](#описание)
+___
 <center>
 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
@@ -19,6 +24,7 @@ ___
 </center>
 
 ____
+<a name="Описание"></a> 
 
 Приложение является REST сервисом для получения пословного перевода текстовой строки с помощью Yandex API.  
 Во время работы происходит запись в базу следующих данных:  
