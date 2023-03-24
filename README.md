@@ -1,6 +1,10 @@
 
 
-## <center>REST Yandex API Translator</center>
+## <center>
+
+REST Yandex API Translator
+
+</center>
 
 #### <center> Данный проект является тестовым (учебным) проектом. </center>
 ___
