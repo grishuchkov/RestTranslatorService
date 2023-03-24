@@ -21,7 +21,7 @@ public class TranslateService {
 
     public ResponseToUserDTO getTranslateFromYandex(RequestFromUserDTO requestFromUserDTO, String userIp){
 
-        String[] wordsArray = parser.stringToList(requestFromUserDTO.getText());
+        String[] wordsArray = parser.stringToArray(requestFromUserDTO.getText());
 
         requestToYandexDTO.setFields(requestFromUserDTO.getLanguageFrom(),
                                     requestFromUserDTO.getLanguageTo(),

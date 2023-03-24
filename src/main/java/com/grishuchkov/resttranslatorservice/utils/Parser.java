@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 @Component
 public class Parser {
 
-    public String [] stringToList(String stringFromRequest){
+    public String [] stringToArray(String stringFromRequest){
         String withoutTrash = stringFromRequest.replaceAll("\\pP","");
 
         return withoutTrash.split(" ");
