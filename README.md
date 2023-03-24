@@ -84,7 +84,7 @@ ___
 1. Клонируйте репозиторий:  
    `git clone https://github.com/grishuchkov/RestTranslatorService.git`
 
-2. Введите свои настройки: `application.yml`  
+2. Введите свои настройки в: `application.yml`  
    Необходимо ввести свой `Token` для Yandex Cloud API.  
    Внести изменения в настройки БД, если необходимо.
 
@@ -102,9 +102,8 @@ ___
    Обратите внимание на порты. В `application.yml` порт по умолчанию стоит как: `9000`
    
 6. Все должно работать.
-<br>
-___
 
+___
 <a name="Автор"></a>
 
 ### Автор: [Grishuchkov Danila](https://github.com/grishuchkov)
