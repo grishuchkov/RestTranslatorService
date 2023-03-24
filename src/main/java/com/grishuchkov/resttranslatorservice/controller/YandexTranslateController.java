@@ -1,7 +1,7 @@
 package com.grishuchkov.resttranslatorservice.controller;
 
-import com.grishuchkov.resttranslatorservice.dto.RequestFromUser;
-import com.grishuchkov.resttranslatorservice.dto.ResponseToUser;
+import com.grishuchkov.resttranslatorservice.dto.RequestFromUserDTO;
+import com.grishuchkov.resttranslatorservice.dto.ResponseToUserDTO;
 import com.grishuchkov.resttranslatorservice.service.TranslateService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +15,10 @@ public class YandexTranslateController {
     private final TranslateService translateService;
 
     @PostMapping("")
-    public ResponseToUser getTranslateFromYandex(@RequestBody RequestFromUser requestFromUser, HttpServletRequest request){
+    public ResponseToUserDTO getTranslateFromYandex(@RequestBody RequestFromUserDTO requestFromUserDTO, HttpServletRequest request){
 
         String ip = request.getRemoteAddr();
 
-        return translateService.getTranslateFromYandex(requestFromUser, ip);
+        return translateService.getTranslateFromYandex(requestFromUserDTO, ip);
     }
 }

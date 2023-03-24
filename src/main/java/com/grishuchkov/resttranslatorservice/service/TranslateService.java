@@ -2,7 +2,7 @@ package com.grishuchkov.resttranslatorservice.service;
 
 import com.grishuchkov.resttranslatorservice.client.YandexClient;
 import com.grishuchkov.resttranslatorservice.dto.*;
-import com.grishuchkov.resttranslatorservice.repo.RequestRepository;
+import com.grishuchkov.resttranslatorservice.repo.YandexRepository;
 import com.grishuchkov.resttranslatorservice.utils.Parser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,39 +12,39 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class TranslateService {
     private final YandexClient yandexClient;
-    private final ResponseToUser responseToUser;
+    private final ResponseToUserDTO responseToUserDTO;
     private final Parser parser;
-    private final RequestToYandex requestToYandex;
-    private final RequestToRepository requestToRepository;
-    private final RequestRepository requestRepository;
-    private ResponseFromYandex responseFromYandex;
+    private final RequestToYandexDTO requestToYandexDTO;
+    private final RequestToRepositoryDTO requestToRepositoryDTO;
+    private final YandexRepository yandexRepository;
+    private ResponseFromYandexDTO responseFromYandexDTO;
 
-    public ResponseToUser getTranslateFromYandex(RequestFromUser requestFromUser, String userIp){
+    public ResponseToUserDTO getTranslateFromYandex(RequestFromUserDTO requestFromUserDTO, String userIp){
 
-        String[] wordsArray = parser.stringToList(requestFromUser.getText());
+        String[] wordsArray = parser.stringToList(requestFromUserDTO.getText());
 
-        requestToYandex.setFields(requestFromUser.getLanguageFrom(),
-                                    requestFromUser.getLanguageTo(),
+        requestToYandexDTO.setFields(requestFromUserDTO.getLanguageFrom(),
+                                    requestFromUserDTO.getLanguageTo(),
                                     wordsArray);
 
-        responseFromYandex = yandexClient.translator(requestToYandex);
+        responseFromYandexDTO = yandexClient.translate(requestToYandexDTO);
 
-        String[] translatedWordsArray = parser.responseFromYandexToStringArray(responseFromYandex);
-        String translatedText = parser.responseFromYandexToString(responseFromYandex);
+        String[] translatedWordsArray = parser.responseFromYandexToStringArray(responseFromYandexDTO);
+        String translatedText = parser.responseFromYandexToString(responseFromYandexDTO);
 
-        requestToRepository.setFields(requestFromUser.getText(),
+        requestToRepositoryDTO.setFields(requestFromUserDTO.getText(),
                                         translatedText,
-                                        requestFromUser.getLanguageFrom(),
-                                        requestFromUser.getLanguageTo(),
+                                        requestFromUserDTO.getLanguageFrom(),
+                                        requestFromUserDTO.getLanguageTo(),
                                         userIp,
                                         wordsArray,
                                         translatedWordsArray);
 
-        requestRepository.save(requestToRepository);
+        yandexRepository.save(requestToRepositoryDTO);
 
-        responseToUser.setTranslatedText(translatedText);
+        responseToUserDTO.setTranslatedText(translatedText);
 
-        return responseToUser;
+        return responseToUserDTO;
     }
 }
 
