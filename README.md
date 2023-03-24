@@ -6,7 +6,7 @@
 ___
 <br>
 
-![cover](https://github.com/grishuchkov/RestTranslatorService/blob/master/logo.png)
+![cover](https://github.com/grishuchkov/RestTranslatorService/blob/master/gitsrc/logo.png)
 ___
 
 
@@ -14,7 +14,8 @@ ___
 [1. Описание](#описание)  
 [2. Взаимодействие с приложением](#Взаимодействие)  
 [3. Сборка и старт](#Старт)  
-[4. Автор](#Автор)
+[4. Схема (закройте глаза)](#Схема)  
+[5. Автор](#Автор)
 ___
 <center>
 
@@ -103,6 +104,12 @@ ___
    
 6. Все должно работать.
 
+___
+<a name="Схема"></a>
+Сюда лучше не смотреть.  
+Во время разработки создал себе схему, решил выложить этот черновик. Никакой практической пользы в нём нет. 
+
+![schema](https://github.com/grishuchkov/RestTranslatorService/blob/master/gitsrc/schema.png)
 ___
 <a name="Автор"></a>
 
