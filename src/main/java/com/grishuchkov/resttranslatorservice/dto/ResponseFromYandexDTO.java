@@ -9,6 +9,6 @@ import java.util.ArrayList;
 @Setter
 @NoArgsConstructor
 @Component
-public class ResponseFromYandex {
+public class ResponseFromYandexDTO {
     private ArrayList<Translations> translations;
 }

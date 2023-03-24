@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
-public class RequestFromUser {
+public class RequestFromUserDTO {
 
     private final String text;
     private final String languageFrom;
