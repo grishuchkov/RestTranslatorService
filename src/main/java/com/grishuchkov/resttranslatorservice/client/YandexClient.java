@@ -1,8 +1,8 @@
 package com.grishuchkov.resttranslatorservice.client;
 
 import com.google.gson.Gson;
-import com.grishuchkov.resttranslatorservice.dto.RequestToYandexDTO;
-import com.grishuchkov.resttranslatorservice.dto.ResponseFromYandexDTO;
+import com.grishuchkov.resttranslatorservice.dto.RequestToYandex;
+import com.grishuchkov.resttranslatorservice.dto.ResponseFromYandex;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -16,6 +16,8 @@ import org.springframework.web.client.RestTemplate;
 @RequiredArgsConstructor
 public class YandexClient {
     private final Gson gson;
+    private final RestTemplate restTemplate;
+    private final HttpHeaders headers;
 
     @Value("${spring.yandex.url}")
     private String URL;
@@ -23,22 +25,20 @@ public class YandexClient {
     @Value("${spring.yandex.token}")
     private String TOKEN;
 
-    public ResponseFromYandexDTO translate(RequestToYandexDTO requestToYandexDTO){
-        return requestToYandex(requestToYandexDTO);
+
+    public ResponseFromYandex translate(RequestToYandex requestToYandex){
+        return requestToYandex(requestToYandex);
     }
 
-    private ResponseFromYandexDTO requestToYandex(RequestToYandexDTO requestToYandexDTO){
-
-        HttpHeaders headers = new HttpHeaders();
-        RestTemplate restTemplate = new RestTemplate();
+    private ResponseFromYandex requestToYandex(RequestToYandex requestToYandex){
 
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.add("Authorization", TOKEN);
 
-        String json = gson.toJson(requestToYandexDTO);
+        String json = gson.toJson(requestToYandex);
 
         HttpEntity<String> request = new HttpEntity<>(json, headers);
 
-        return restTemplate.postForObject(URL, request, ResponseFromYandexDTO.class);
+        return restTemplate.postForObject(URL, request, ResponseFromYandex.class);
     }
 }

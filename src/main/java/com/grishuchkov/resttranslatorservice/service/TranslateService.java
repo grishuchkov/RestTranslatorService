@@ -14,25 +14,25 @@ public class TranslateService {
     private final YandexClient yandexClient;
     private final ResponseToUserDTO responseToUserDTO;
     private final Parser parser;
-    private final RequestToYandexDTO requestToYandexDTO;
-    private final RequestToRepositoryDTO requestToRepositoryDTO;
+    private final RequestToYandex requestToYandex;
+    private final RequestToRepository requestToRepository;
     private final YandexRepository yandexRepository;
-    private ResponseFromYandexDTO responseFromYandexDTO;
+    private ResponseFromYandex responseFromYandex;
 
     public ResponseToUserDTO getTranslateFromYandex(RequestFromUserDTO requestFromUserDTO, String userIp){
 
         String[] wordsArray = parser.stringToArray(requestFromUserDTO.getText());
 
-        requestToYandexDTO.setFields(requestFromUserDTO.getLanguageFrom(),
+        requestToYandex.setFields(requestFromUserDTO.getLanguageFrom(),
                                     requestFromUserDTO.getLanguageTo(),
                                     wordsArray);
 
-        responseFromYandexDTO = yandexClient.translate(requestToYandexDTO);
+        responseFromYandex = yandexClient.translate(requestToYandex);
 
-        String[] translatedWordsArray = parser.responseFromYandexToStringArray(responseFromYandexDTO);
-        String translatedText = parser.responseFromYandexToString(responseFromYandexDTO);
+        String[] translatedWordsArray = parser.responseFromYandexToStringArray(responseFromYandex);
+        String translatedText = parser.responseFromYandexToString(responseFromYandex);
 
-        requestToRepositoryDTO.setFields(requestFromUserDTO.getText(),
+        requestToRepository.setFields(requestFromUserDTO.getText(),
                                         translatedText,
                                         requestFromUserDTO.getLanguageFrom(),
                                         requestFromUserDTO.getLanguageTo(),
@@ -40,7 +40,7 @@ public class TranslateService {
                                         wordsArray,
                                         translatedWordsArray);
 
-        yandexRepository.save(requestToRepositoryDTO);
+        yandexRepository.save(requestToRepository);
 
         responseToUserDTO.setTranslatedText(translatedText);
 

@@ -1,6 +1,6 @@
 package com.grishuchkov.resttranslatorservice.utils;
 
-import com.grishuchkov.resttranslatorservice.dto.ResponseFromYandexDTO;
+import com.grishuchkov.resttranslatorservice.dto.ResponseFromYandex;
 import com.grishuchkov.resttranslatorservice.dto.Translations;
 import org.springframework.stereotype.Component;
 
@@ -15,18 +15,18 @@ public class Parser {
         return withoutTrash.split(" ");
     }
 
-    public String responseFromYandexToString(ResponseFromYandexDTO responseFromYandexDTO){
+    public String responseFromYandexToString(ResponseFromYandex responseFromYandex){
 
-        return responseFromYandexDTO.getTranslations()
+        return responseFromYandex.getTranslations()
                 .stream()
                 .map(Translations::getText)
                 .collect(Collectors.toList()).toString()
                 .replaceAll("\\pP", "");
     }
 
-    public String [] responseFromYandexToStringArray(ResponseFromYandexDTO responseFromYandexDTO){
+    public String [] responseFromYandexToStringArray(ResponseFromYandex responseFromYandex){
 
-        return responseFromYandexDTO.getTranslations()
+        return responseFromYandex.getTranslations()
                 .stream()
                 .map(Translations::getText)
                 .toArray(String[]::new);

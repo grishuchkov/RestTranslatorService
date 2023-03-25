@@ -10,7 +10,7 @@ import java.util.LinkedList;
 @Setter
 @NoArgsConstructor
 @Component
-public class RequestToYandexDTO {
+public class RequestToYandex {
 
     private String sourceLanguageCode;
     private String targetLanguageCode;

@@ -1,6 +1,6 @@
 package com.grishuchkov.resttranslatorservice.repo;
 
-import com.grishuchkov.resttranslatorservice.dto.RequestToRepositoryDTO;
+import com.grishuchkov.resttranslatorservice.dto.RequestToRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -22,12 +22,12 @@ public class YandexRepository {
     @Value("${spring.datasource.password}")
     private String PASSWORD;
 
-    public void save(RequestToRepositoryDTO requestToRepositoryDTO){
+    public void save(RequestToRepository requestToRepository){
         setConnection();
 
-        int returnedRequestId = insertToBase.addTranslateRequestInfo(connection, requestToRepositoryDTO);
+        int returnedRequestId = insertToBase.addTranslateRequestInfo(connection, requestToRepository);
 
-        insertToBase.addTranslatedWordsToBase(connection, requestToRepositoryDTO, returnedRequestId);
+        insertToBase.addTranslatedWordsToBase(connection, requestToRepository, returnedRequestId);
 
     }
 
