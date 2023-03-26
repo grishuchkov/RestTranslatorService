@@ -16,8 +16,6 @@ import org.springframework.web.client.RestTemplate;
 @RequiredArgsConstructor
 public class YandexClient {
     private final Gson gson;
-    private final RestTemplate restTemplate;
-    private final HttpHeaders headers;
 
     @Value("${spring.yandex.url}")
     private String URL;
@@ -31,6 +29,8 @@ public class YandexClient {
     }
 
     private ResponseFromYandex requestToYandex(RequestToYandex requestToYandex){
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
 
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.add("Authorization", TOKEN);

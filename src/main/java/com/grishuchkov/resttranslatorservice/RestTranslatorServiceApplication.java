@@ -12,15 +12,4 @@ public class RestTranslatorServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(RestTranslatorServiceApplication.class, args);
     }
-
-    @Bean
-    public HttpHeaders httpHeaders(){
-        return new HttpHeaders();
-    }
-
-    @Bean
-    public RestTemplate restTemplate(){
-        return new RestTemplate();
-    }
-
 }
