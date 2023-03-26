@@ -14,4 +14,4 @@ spring:
         web-allow-others: true
   yandex:
     url: "https://translate.api.cloud.yandex.net/translate/v2/translate"
-    token: "Api-Key AQVNyjKkGZaGRfXIkQVZymFY6QJVCvfCHjgB-IiI"
+    token: "Api-Key *сюда вставить свой токен*"
